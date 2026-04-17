@@ -3,3 +3,8 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: -0.01em;
+}
