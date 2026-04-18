@@ -68,7 +68,7 @@ export default function Search() {
 
             {tracks.map((track, i) => (
               <div key={`${track.id}-${i}`} className="track-card">
-                <img src={track.thumbnail} alt={track.title} className="track-image" />
+                <img src={track.thumbnail} alt={track.title} className="track-image" loading="lazy" />
                 <div className="track-info">
                   <div className="track-title">{track.title}</div>
                   <div className="track-artist">{track.artist || track.channel}</div>
