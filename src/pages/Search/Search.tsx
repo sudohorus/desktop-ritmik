@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
-import { supabase } from '../../lib/supabase'
 import { TrackService } from '../../services/TrackService'
 import { useInfiniteScroll } from '../../hooks/useInfiniteScroll'
 import { formatDuration } from '../../utils/format'
+import Header from '../../components/Header/Header'
 import '../../styles/Search.css'
 
 export default function Search() {
@@ -16,33 +16,9 @@ export default function Search() {
     handleScroll 
   } = useInfiniteScroll({ fetchData: memoizedFetch });
 
-  async function handleLogout() {
-    await supabase.auth.signOut()
-  }
-
   return (
     <div className="search-page">
-      <header className="header">
-        <div className="header-left">
-          <div className="logo">Ritmik</div>
-          <nav className="nav-links">
-            <a href="#">My Playlists</a>
-            <a href="#">Following</a>
-            <a href="#">Explore</a>
-            <a href="#">Stats</a>
-          </nav>
-        </div>
-        
-        <div className="header-right">
-          <div className="user-profile" onClick={handleLogout} title="Click to logout">
-            <div className="avatar">A</div>
-            <span className="username">aaaa</span>
-            <svg className="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="main-content" onScroll={handleScroll}>
         <div className="search-section">
@@ -66,7 +42,7 @@ export default function Search() {
               <p style={{ color: '#888', padding: '1rem' }}>Nenhuma música encontrada.</p>
             )}
 
-            {tracks.map((track, i) => (
+            {tracks.map((track: any, i) => (
               <div key={`${track.id}-${i}`} className="track-card">
                 <img src={track.thumbnail} alt={track.title} className="track-image" loading="lazy" />
                 <div className="track-info">

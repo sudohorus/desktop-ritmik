@@ -1,0 +1,75 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background-color: #111113;
+  border-bottom: 1px solid #1a1a1d;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.header-logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #7d7d85;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #3b3b40;
+  color: #dadada;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.username {
+  font-size: 0.9rem;
+  color: #a8a8af;
+}
+
+.chevron {
+  color: #7d7d85;
+}
