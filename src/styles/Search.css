@@ -227,3 +227,29 @@
     transform: rotate(360deg);
   }
 }
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-pulse {
+  background-color: #2a2a2f;
+  animation: pulse 1.5s infinite ease-in-out;
+  border-radius: 4px;
+}
+
+.skeleton-text {
+  border-radius: 4px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

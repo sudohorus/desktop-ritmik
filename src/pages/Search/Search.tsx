@@ -76,11 +76,19 @@ export default function Search() {
                 </div>
               </div>
             ))}
-            
             {isLoading && (
-              <div className="loading-spinner-container">
-                <div className="spinner"></div>
-              </div>
+              <>
+                {Array.from({ length: tracks.length === 0 ? 6 : 3 }).map((_, i) => (
+                  <div key={`skeleton-${i}`} className="track-card skeleton-card">
+                    <div className="track-image skeleton-pulse"></div>
+                    <div className="track-info" style={{ flex: 1 }}>
+                      <div className="skeleton-text skeleton-pulse" style={{ width: '40%', height: '14px', marginBottom: '6px' }}></div>
+                      <div className="skeleton-text skeleton-pulse" style={{ width: '25%', height: '11px', marginBottom: '8px' }}></div>
+                      <div className="skeleton-text skeleton-pulse" style={{ width: '15%', height: '10px' }}></div>
+                    </div>
+                  </div>
+                ))}
+              </>
             )}
           </div>
         </div>
