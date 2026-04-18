@@ -13,7 +13,6 @@ function SignUp({ onGoToLogin }: SignUpProps) {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
 
   async function handleSignUp(e: React.FormEvent) {
     e.preventDefault()
@@ -47,29 +46,8 @@ function SignUp({ onGoToLogin }: SignUpProps) {
     if (error) {
       setError(error.message)
     } else {
-      setSuccess(true)
+      onGoToLogin()
     }
-  }
-
-  if (success) {
-    return (
-      <div className="page">
-        <div className="login-wrapper">
-          <div className="login-header">
-            <h1 className="brand-name">Ritmik</h1>
-            <p className="brand-subtitle">Check your email</p>
-          </div>
-          <div className="login-card">
-            <p className="success-msg">
-              We sent a confirmation link to <strong>{email}</strong>. Open it to activate your account.
-            </p>
-            <button className="btn-signin" onClick={onGoToLogin}>
-              Back to Sign In
-            </button>
-          </div>
-        </div>
-      </div>
-    )
   }
 
   return (
