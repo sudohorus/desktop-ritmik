@@ -1,0 +1,229 @@
+.search-page {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background-color: #0d0d0f;
+  color: #ffffff;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background-color: #111113;
+  border-bottom: 1px solid #1a1a1d;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #f1f1f1;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #7d7d85;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #3b3b40;
+  color: #dadada;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.username {
+  font-size: 0.9rem;
+  color: #a8a8af;
+}
+
+.chevron {
+  color: #7d7d85;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  overflow-y: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+.search-section {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+
+.search-input {
+  flex: 1;
+  background-color: #17171a;
+  border: 1px solid #222226;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.search-input::placeholder {
+  color: #4b4b53;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #3d3d45;
+}
+
+.search-btn {
+  background-color: #26262a;
+  border: 1px solid #2d2d32;
+  color: #8c8c93;
+  padding: 0 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.search-btn:hover {
+  background-color: #313136;
+  color: #ffffff;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  font-weight: normal;
+  color: #e5e5e5;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-bottom: 3rem;
+}
+
+.track-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background-color: #151518;
+  border: 1px solid #202024;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.track-card:hover {
+  background-color: #1a1a1e;
+  border-color: #2a2a2f;
+}
+
+.track-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.track-title {
+  font-size: 0.95rem;
+  color: #dbdbdb;
+  line-height: 1.3;
+}
+
+.track-artist {
+  font-size: 0.8rem;
+  color: #797984;
+}
+
+.track-duration {
+  font-size: 0.75rem;
+  color: #4b4b53;
+}
+
+.loading-spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  color: #797984;
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #2a2a2f;
+  border-top-color: #8c8c93;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

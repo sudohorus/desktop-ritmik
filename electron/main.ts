@@ -1,4 +1,5 @@
 import { app, BrowserWindow, Menu } from 'electron'
+import { registerYoutubeHandlers } from './handlers/youtube'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 
@@ -65,5 +66,7 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+registerYoutubeHandlers()
 
 app.whenReady().then(createWindow)

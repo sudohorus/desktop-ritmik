@@ -1,52 +1,28 @@
 import { useState } from 'react'
-import { supabase } from './lib/supabase'
+import { supabase } from '../../lib/supabase'
 
-interface SignUpProps {
-  onGoToLogin: () => void
+interface LoginProps {
+  onGoToSignUp: () => void
 }
 
-function SignUp({ onGoToLogin }: SignUpProps) {
+export default function Login({ onGoToSignUp }: LoginProps) {
   const [showPassword, setShowPassword] = useState(false)
-  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  async function handleSignUp(e: React.FormEvent) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
     setError(null)
-
-    if (username.length < 3) {
-      setError('Username must be at least 3 characters.')
-      return
-    }
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters.')
-      return
-    }
-    if (password !== confirmPassword) {
-      setError('Passwords do not match.')
-      return
-    }
-
     setLoading(true)
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { username },
-      },
-    })
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
 
     setLoading(false)
 
     if (error) {
       setError(error.message)
-    } else {
-      onGoToLogin()
     }
   }
 
@@ -55,24 +31,11 @@ function SignUp({ onGoToLogin }: SignUpProps) {
       <div className="login-wrapper">
         <div className="login-header">
           <h1 className="brand-name">Ritmik</h1>
-          <p className="brand-subtitle">Create your account</p>
+          <p className="brand-subtitle">Sign in to your account</p>
         </div>
 
-        <form className="login-card" onSubmit={handleSignUp}>
+        <form className="login-card" onSubmit={handleLogin}>
           {error && <p className="error-msg">{error}</p>}
-
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              type="text"
-              placeholder="sudohorus"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-            <span className="field-hint">At least 3 characters</span>
-          </div>
 
           <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -117,42 +80,31 @@ function SignUp({ onGoToLogin }: SignUpProps) {
                 )}
               </button>
             </div>
-            <span className="field-hint">At least 6 characters</span>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="confirm-password">Confirm Password</label>
-            <input
-              id="confirm-password"
-              type="password"
-              placeholder="••••••••"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
+          <div className="forgot-link">
+            <a href="#">Forgot your password?</a>
           </div>
-
-          <p className="terms-text">
-            By signing up, you agree to our{' '}
-            <a href="#">Terms of Use</a> and{' '}
-            <a href="#">Privacy Policy</a>.
-          </p>
 
           <button className="btn-signin" type="submit" disabled={loading}>
-            {loading ? 'Creating account...' : 'Sign Up'}
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
 
           <p className="signup-text">
-            Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); onGoToLogin() }}>Sign in</a>
+            Don't have an account?{' '}
+            <a href="#" onClick={(e) => { e.preventDefault(); onGoToSignUp() }}>Sign up</a>
           </p>
         </form>
 
         <div className="login-footer">
           <a href="#">← Back to home</a>
+          <div className="footer-links">
+            <a href="#">Terms of Use</a>
+            <span>•</span>
+            <a href="#">Privacy Policy</a>
+          </div>
         </div>
       </div>
     </div>
   )
 }
-
-export default SignUp
